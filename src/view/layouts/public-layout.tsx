@@ -10,13 +10,13 @@ export function PublicLayout() {
       </div>
       <header className="z-10 shrink-0 pt-6 pl-6">
         <div className="flex items-center gap-3">
-          <span className="text-foreground font-serif text-xl font-semibold tracking-tight">
+          <span className="text-primary font-serif text-xl tracking-tight sm:text-2xl">
             Sejalev
           </span>
         </div>
       </header>
 
-      <main className="flex flex-1 items-center justify-center p-4 sm:p-8">
+      <main className="z-100 flex flex-1 items-center justify-center p-4 sm:p-8">
         <div className="flex w-full justify-center">
           <Outlet />
         </div>

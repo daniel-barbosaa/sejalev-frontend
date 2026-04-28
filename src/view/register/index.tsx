@@ -42,7 +42,7 @@ export function Register() {
         <p className="text-muted-foreground mt-5 text-center text-sm">
           Já tem conta?
           <Link
-            to="/login"
+            to="/conta"
             className="text-primary ml-2 font-semibold hover:underline"
           >
             Entrar agora
