@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
 import GoogleLogo from "../../assets/google.svg";
+import { PasswordField } from "../components/password-field";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
-import { PasswordField } from "../components/ui/password-field";
 
 export function Login() {
   return (

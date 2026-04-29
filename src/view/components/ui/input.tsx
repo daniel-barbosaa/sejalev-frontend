@@ -1,7 +1,7 @@
 import { type ComponentProps, forwardRef } from "react";
 
 import { cn } from "../../../app/utils/class-merge";
-import { FieldError } from "./field-error";
+import { FieldError } from "../field-error";
 interface InputProps extends ComponentProps<"input"> {
   name: string;
   error?: string;
