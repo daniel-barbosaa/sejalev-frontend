@@ -1,53 +1,61 @@
 import { Link } from "react-router-dom";
 
+import GoogleLogo from "../../assets/google.svg";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
+import { PasswordField } from "../components/ui/password-field";
 
 export function Register() {
   return (
-    <section className="w-full max-w-xl">
+    <section className="w-full max-w-112.5">
       <div className="mb-4 text-center md:mb-6">
-        <h2 className="text-2xl font-bold">Criar nova conta</h2>
-        <p className="text-muted-foreground mt-2 text-sm">
-          Preencha seus dados e comece em poucos passos.
+        <h1 className="text-foreground text-2xl font-medium">Crie sua conta</h1>
+        <p className="text-muted-foreground">
+          Junte-se a nós para uma vida mais leve e organizada.
         </p>
       </div>
 
-      <div className="rounded-3xl p-6 md:border md:border-white/60 md:bg-white/40 md:shadow-[0_10px_30px_rgba(0,0,0,0.06)] md:backdrop-blur-2xl">
-        <div className="flex flex-col gap-3 md:gap-4">
-          <Input name="name" placeholder="Seu nome" />
+      <div className="border-border/40 rounded-3xl border bg-white p-8 shadow-sm sm:p-10">
+        <form className="space-y-6">
+          <div className="space-y-4">
+            <Input name="fullName" type="text" placeholder="Nome Completo" />
+            <Input name="email" type="email" placeholder="E-mail" />
+            <PasswordField name="password" />
+          </div>
 
-          <Input
-            autoComplete="email"
-            name="email"
-            placeholder="Seu e-mail"
-            type="email"
-          />
-          <Input
-            autoComplete="new-password"
-            name="password"
-            placeholder="Crie uma senha"
-            type="password"
-          />
-          <Input
-            autoComplete="new-password"
-            name="passwordConfirmation"
-            placeholder="Confirme sua senha"
-            type="password"
-          />
+          <Button className="w-full">Criar conta</Button>
 
-          <Button className="mt-2 w-full">Criar conta</Button>
-        </div>
+          <div className="relative py-2">
+            <div className="absolute inset-0 flex items-center">
+              <div className="border-border/60 w-full border-t"></div>
+            </div>
+            <div className="relative flex justify-center text-xs">
+              <span className="text-muted-foreground bg-white px-4">
+                ou cadastre-se com
+              </span>
+            </div>
+          </div>
 
-        <p className="text-muted-foreground mt-5 text-center text-sm">
-          Já tem conta?
-          <Link
-            to="/conta"
-            className="text-primary ml-2 font-semibold hover:underline"
-          >
-            Entrar agora
-          </Link>
-        </p>
+          <div className="grid grid-cols-1">
+            <Button type="button" className="space-x-3" variant="outline">
+              <img className="w-5.5" src={GoogleLogo} alt="google" />
+              <span className="text-sm">Google</span>
+            </Button>
+          </div>
+
+          <div className="text-center">
+            <p className="text-muted-foreground text-sm">
+              Já possui uma conta?
+              <Link
+                to="/conta"
+                className="text-primary font-semibold decoration-2 underline-offset-4 hover:underline"
+              >
+                {" "}
+                Entrar
+              </Link>
+            </p>
+          </div>
+        </form>
       </div>
     </section>
   );

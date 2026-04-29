@@ -12,7 +12,7 @@ const buttonVariants = cva(
         default: "bg-primary text-white hover:bg-primary/80",
         destructive: "bg-destructive hover:bg-destructive/80 text-white",
         outline:
-          "bg-transparent border border-gray-800 text-foreground/90 hover:bg-gray-800/5",
+          "bg-transparent border border-border/60 text-foreground/90 hover:bg-gray-800/5",
       },
     },
     defaultVariants: {
