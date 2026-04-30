@@ -4,7 +4,6 @@ import {
   CalendarDays,
   ChevronLeft,
   ChevronRight,
-  HelpCircle,
   LogOut,
   Target,
   User,
@@ -42,21 +41,6 @@ export function Sidebar({ activePage }: SidebarProps) {
       label: "Cabeceira",
       icon: BookMarked,
       path: "/cabeceira",
-    },
-  ];
-
-  const systemItems = [
-    {
-      id: "profile",
-      label: "Perfil",
-      icon: User,
-      path: "/perfil",
-    },
-    {
-      id: "help",
-      label: "Ajuda",
-      icon: HelpCircle,
-      path: "/ajuda",
     },
   ];
 
@@ -148,21 +132,6 @@ export function Sidebar({ activePage }: SidebarProps) {
             )}
           </AnimatePresence>
           <ul className="space-y-1">{renderNavItems(mainItems)}</ul>
-        </nav>
-
-        <nav className="mt-8">
-          <AnimatePresence>
-            {!isCollapsed && (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="mb-4 px-4 text-[10px] font-bold tracking-widest text-slate-300 uppercase"
-              >
-                Conta
-              </motion.p>
-            )}
-          </AnimatePresence>
-          <ul className="space-y-1">{renderNavItems(systemItems)}</ul>
         </nav>
       </div>
 
