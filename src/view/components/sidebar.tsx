@@ -1,15 +1,9 @@
-import {
-  Balloon,
-  BookMarked,
-  CalendarDays,
-  ChevronLeft,
-  ChevronRight,
-  HelpCircle,
-  Target,
-} from "lucide-react";
+import { Balloon, ChevronLeft, ChevronRight, HelpCircle } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+
+import { mainNavItemsLeft } from "@/app/config/navigation";
 
 import { cn } from "../../app/utils/class-merge";
 
@@ -20,28 +14,7 @@ interface SidebarProps {
 export function Sidebar({ activePage }: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  const mainItems = [
-    {
-      id: "today",
-      label: "Hoje",
-      icon: Target,
-      path: "/hoje",
-    },
-    {
-      id: "plan",
-      label: "Planejar",
-      icon: CalendarDays,
-      path: "/planejar",
-    },
-    {
-      id: "headboard",
-      label: "Cabeceira",
-      icon: BookMarked,
-      path: "/cabeceira",
-    },
-  ];
-
-  const renderNavItems = (items: typeof mainItems) => {
+  const renderNavItems = (items: typeof mainNavItemsLeft) => {
     return items.map((item) => {
       const Icon = item.icon;
       const isActive = activePage === item.id;
@@ -128,7 +101,7 @@ export function Sidebar({ activePage }: SidebarProps) {
               </motion.p>
             )}
           </AnimatePresence>
-          <ul className="space-y-1">{renderNavItems(mainItems)}</ul>
+          <ul className="space-y-1">{renderNavItems(mainNavItemsLeft)}</ul>
         </nav>
       </div>
 

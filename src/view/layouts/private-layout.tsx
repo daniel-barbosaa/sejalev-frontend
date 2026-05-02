@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 
+import { BottomNav } from "../components/bottom-nav";
 import { Header } from "../components/header";
 import { Sidebar } from "../components/sidebar";
 
@@ -44,6 +45,7 @@ export function PrivateLayout() {
             <Outlet />
           </div>
         </main>
+        <BottomNav />
       </div>
     </div>
   );
