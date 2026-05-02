@@ -4,13 +4,11 @@ import {
   CalendarDays,
   ChevronLeft,
   ChevronRight,
-  LogOut,
+  HelpCircle,
   Target,
-  User,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import { useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
 
 import { cn } from "../../app/utils/class-merge";
@@ -20,7 +18,6 @@ interface SidebarProps {
 }
 
 export function Sidebar({ activePage }: SidebarProps) {
-  const navigate = useNavigate();
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const mainItems = [
@@ -135,37 +132,60 @@ export function Sidebar({ activePage }: SidebarProps) {
         </nav>
       </div>
 
-      <div className="overflow-hidden border-t border-slate-50 p-4">
+      <div className="mt-auto p-4">
         <div
-          className={`flex items-center gap-3 rounded-xl px-2 py-2 transition-all ${!isCollapsed ? "bg-slate-50" : ""} `}
+          className={cn(
+            "flex max-h-35 w-full flex-col overflow-hidden transition-all duration-300",
+            isCollapsed
+              ? "flex items-center justify-center border-none bg-transparent p-2"
+              : "rounded-2xl border border-emerald-100/50 bg-emerald-50/50 p-4",
+          )}
         >
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-emerald-100 bg-emerald-50">
-            <User size={18} className="text-primary stroke-[1.5px]" />
-          </div>
-          <AnimatePresence>
-            {!isCollapsed && (
+          {isCollapsed ? (
+            <button
+              className="group rounded-xl p-3 text-emerald-600 transition-colors hover:bg-emerald-50"
+              title="Ajuda"
+            >
+              <HelpCircle className="h-5 w-5 stroke-[1.5px] transition-transform group-hover:scale-110" />
+            </button>
+          ) : (
+            <AnimatePresence>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="flex min-w-0 flex-col"
+                transition={{
+                  duration: 0.2,
+                  delay: 0.35,
+                }}
+                className="flex flex-col gap-3"
               >
-                <span className="text-foreground/80 truncate text-sm font-semibold">
-                  Daniel Mendes
-                </span>
+                <div className="flex items-center gap-2">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-100">
+                    <HelpCircle className="h-4 w-4 text-emerald-600" />
+                  </div>
+
+                  <span className="text-sm font-semibold whitespace-nowrap text-slate-700">
+                    Precisa de ajuda?
+                  </span>
+                </div>
+
+                <p className="text-xs leading-relaxed text-slate-500">
+                  Estamos aqui para te guiar.
+                </p>
+
+                <button className="w-full rounded-xl border border-emerald-100 bg-white py-2 text-xs font-bold text-emerald-600 shadow-sm transition-all hover:bg-emerald-600 hover:text-white">
+                  Central de Ajuda
+                </button>
               </motion.div>
-            )}
-          </AnimatePresence>
-          {!isCollapsed && (
-            <button
-              onClick={() => navigate("/login")}
-              className="hover:text-destructive text-muted-foreground/30 ml-auto transition-colors"
-            >
-              <LogOut size={14} />
-            </button>
+            </AnimatePresence>
           )}
         </div>
       </div>
     </motion.div>
   );
 }
+
+/**
+
+ */
