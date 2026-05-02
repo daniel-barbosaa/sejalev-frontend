@@ -18,19 +18,19 @@ export function BottomNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const moreItems = [
-    { id: "profile", label: "Perfil", icon: User, path: "/dashboard/profile" },
+    { id: "perfil", label: "Perfil", icon: User, path: "/perfil" },
     {
-      id: "settings",
+      id: "configuracoes",
       label: "Ajustes",
       icon: Settings,
-      path: "/dashboard/settings",
+      path: "/configuracoes",
     },
-    { id: "help", label: "Ajuda", icon: HelpCircle, path: "/dashboard/help" },
-    { id: "logout", label: "Sair", icon: LogOut, path: "/login", danger: true },
+    { id: "ajuda", label: "Ajuda", icon: HelpCircle, path: "/ajuda" },
+    { id: "conta", label: "Sair", icon: LogOut, path: "/conta", danger: true },
   ];
 
   const getActiveState = (path: string) => {
-    if (path === "/dashboard") return location.pathname === "/dashboard";
+    if (path === "/hoje") return location.pathname === "/hoje";
     return location.pathname.startsWith(path);
   };
 
@@ -116,7 +116,7 @@ export function BottomNav() {
                     <button
                       key={item.id}
                       onClick={() => handleNavigate(item.path)}
-                      className={`flex items-center gap-4 rounded-2xl p-4 transition-all ${
+                      className={`flex items-center gap-4 rounded-2xl p-3 transition-all ${
                         item.danger
                           ? "text-destructive hover:bg-red-50"
                           : "text-slate-600 hover:bg-slate-50"
