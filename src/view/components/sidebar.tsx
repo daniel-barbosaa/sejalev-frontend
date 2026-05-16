@@ -1,23 +1,20 @@
 import { Balloon, ChevronLeft, ChevronRight, HelpCircle } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 import { mainNavItemsLeft } from "@/app/config/navigation";
 
 import { cn } from "../../app/utils/class-merge";
 
-interface SidebarProps {
-  activePage: string;
-}
-
-export function Sidebar({ activePage }: SidebarProps) {
+export function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const location = useLocation();
 
   const renderNavItems = (items: typeof mainNavItemsLeft) => {
     return items.map((item) => {
       const Icon = item.icon;
-      const isActive = activePage === item.id;
+      const isActive = location.pathname.startsWith(item.path);
 
       return (
         <li key={item.id}>

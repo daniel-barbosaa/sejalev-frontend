@@ -8,13 +8,13 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 import { mainNavItemsBottom } from "@/app/config/navigation";
 
 export function BottomNav() {
   const navigate = useNavigate();
-  const location = useLocation();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const moreItems = [
@@ -29,11 +29,6 @@ export function BottomNav() {
     { id: "conta", label: "Sair", icon: LogOut, path: "/conta", danger: true },
   ];
 
-  const getActiveState = (path: string) => {
-    if (path === "/hoje") return location.pathname === "/hoje";
-    return location.pathname.startsWith(path);
-  };
-
   const handleNavigate = (path: string) => {
     navigate(path);
     setIsMenuOpen(false);
@@ -45,7 +40,7 @@ export function BottomNav() {
         <div className="mx-auto flex h-16 max-w-lg items-center justify-around">
           {mainNavItemsBottom.map((item) => {
             const Icon = item.icon;
-            const isActive = getActiveState(item.path);
+            const isActive = location.pathname.startsWith(item.path);
 
             return (
               <button

@@ -48,7 +48,7 @@ export function Header({ title, subtitle }: HeaderProps) {
   ];
 
   return (
-    <header className="bg-background/80 flex h-14 items-center gap-8 px-8 py-3 md:h-20 md:border-b md:border-slate-100 md:bg-white md:px-8">
+    <header className="bg-background/80 flex h-14 items-center gap-8 px-4 py-3 md:h-20 md:border-b md:border-slate-100 md:bg-white md:px-8">
       <div className="flex-1">
         <h1 className="text-foreground text-lg leading-tight font-semibold tracking-tight md:text-xl">
           {title}
